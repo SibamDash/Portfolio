@@ -15,14 +15,8 @@ router.post('/login', async (req, res) => {
       return res.status(400).json({ error: 'Password is required' });
     }
 
-    const hash = process.env.ADMIN_PASSWORD_HASH;
-    if (!hash) {
-      console.error('ADMIN_PASSWORD_HASH is not configured in .env');
-      return res.status(500).json({ error: 'Server misconfiguration' });
-    }
-
-    const isValid = await bcrypt.compare(password, hash);
-    if (!isValid) {
+    // Hardcoded password for development/testing as requested
+    if (password !== 'admin123') {
       return res.status(401).json({ error: 'Invalid credentials' });
     }
 
