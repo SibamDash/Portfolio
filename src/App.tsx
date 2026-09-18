@@ -10,6 +10,7 @@ import AdminLogin from './pages/AdminLogin';
 import { ProtectedRoute } from './components/ProtectedRoute';
 import AdminLayout from './layouts/AdminLayout';
 import AdminProjects from './pages/AdminProjects';
+import AdminProjectNew from './pages/AdminProjectNew';
 import { Navigate } from 'react-router-dom';
 
 function App() {
@@ -38,6 +39,7 @@ function App() {
                 <Route element={<AdminLayout />}>
                   <Route path="/admin" element={<Navigate to="/admin/projects" replace />} />
                   <Route path="/admin/projects" element={<AdminProjects />} />
+                  <Route path="/admin/projects/new" element={<AdminProjectNew />} />
                   <Route path="/admin/settings" element={<div className="p-8 text-zinc-100">Settings Coming Soon</div>} />
                 </Route>
               </Route>

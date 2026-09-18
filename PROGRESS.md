@@ -1,10 +1,10 @@
 # Portfolio Project Progress
 
 ## Current Phase
-Phase 9 — Admin Project Management
+Phase 10 — Automatic Live/GitHub Fallback
 
 ## Current Section
-Add project flow and GitHub import system
+Centralize click behavior and destination validation
 
 ## Overall Status
 IN PROGRESS
@@ -19,12 +19,13 @@ IN PROGRESS
 - Phase 6: Database & Content Model
 - Phase 7: Admin Authentication
 - Phase 8: Admin Project Dashboard
-
-## In Progress
 - Phase 9: Admin Project Management
 
-## Pending
+## In Progress
 - Phase 10: Automatic Live/GitHub Fallback
+
+## Pending
+- Phase 11: Case Study System
 
 ## Last Verified Checkpoint
 - Date/time: 2026-09-18

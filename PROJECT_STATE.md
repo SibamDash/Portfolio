@@ -2,11 +2,15 @@
 
 ## 1. Context
 - **Project**: Portfolio
-- **Phase**: Phase 9: Admin Project Management
-- **State**: Build project creation flow and GitHub import integration
+- **Phase**: Phase 10: Automatic Live/GitHub Fallback
+- **State**: Centralize click behavior logic across the portfolio cards.
 - **Repository**: `main` branch solely used
 
 ## 2. Recent Actions
+- **Phase 9 (Admin Project Management)**: Completed
+  - Created GitHub API integration router (`server/github.ts`)
+  - Added project creation POST API
+  - Built two-step GitHub metadata import and review flow (`AdminProjectNew.tsx`)
 - **Phase 8 (Admin Dashboard)**: Completed
   - Created Express API endpoint for listing projects
   - Built `AdminLayout` with sidebar navigation
