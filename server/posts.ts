@@ -1,6 +1,6 @@
 import { Router } from 'express';
 import { db } from '../src/prisma/db';
-import { requireAdmin } from './auth';
+import { requireAuth } from './auth';
 
 export const adminPostsRouter = Router();
 export const publicPostsRouter = Router();
@@ -47,7 +47,7 @@ publicPostsRouter.get('/:slug', async (req, res) => {
 });
 
 // --- ADMIN ROUTES (/api/admin/posts) ---
-adminPostsRouter.use(requireAdmin);
+adminPostsRouter.use(requireAuth);
 
 // Get all posts (including drafts)
 adminPostsRouter.get('/', async (req, res) => {
