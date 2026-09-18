@@ -63,6 +63,14 @@ async function main() {
       displayOrder: 4,
       results: [],
       challenges: [],
+      architecture: 'The system uses Go for high-concurrency API handling, PostgreSQL for persistent identity storage, and Redis for token blocklisting and rate-limiting.',
+      architectureNodes: [
+        { id: 'client', type: 'frontend', label: 'Web/Mobile Client', description: 'Consumes API and stores JWT securely' },
+        { id: 'gateway', type: 'service', label: 'API Gateway', description: 'Routes requests and verifies JWT signatures' },
+        { id: 'iam', type: 'auth', label: 'IAM Service', description: 'Go service handling auth, RBAC, and token issuance' },
+        { id: 'cache', type: 'database', label: 'Redis Cache', description: 'Fast token blocklisting and rate limiting' },
+        { id: 'db', type: 'database', label: 'PostgreSQL', description: 'Persistent identity and tenant storage' }
+      ],
       engineeringDecisions: []
     }
   ]

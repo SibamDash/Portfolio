@@ -1,10 +1,10 @@
 # Portfolio Project Progress
 
 ## Current Phase
-Phase 12 — Architecture Visualization
+Phase 13 — Engineering Lab
 
 ## Current Section
-Add optional architecture diagrams to case studies
+Create a dedicated space for standalone technical experiments
 
 ## Overall Status
 IN PROGRESS
@@ -22,12 +22,13 @@ IN PROGRESS
 - Phase 9: Admin Project Management
 - Phase 10: Automatic Live/GitHub Fallback
 - Phase 11: Case Study System
-
-## In Progress
 - Phase 12: Architecture Visualization
 
-## Pending
+## In Progress
 - Phase 13: Engineering Lab
+
+## Pending
+- Phase 14: Dark/Light Mode System
 
 ## Last Verified Checkpoint
 - Date/time: 2026-09-18

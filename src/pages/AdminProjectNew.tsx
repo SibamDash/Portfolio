@@ -25,7 +25,8 @@ export default function AdminProjectNew() {
     status: 'IN_DEVELOPMENT',
     featured: false,
     displayOrder: 0,
-    githubMetadata: null
+    githubMetadata: null,
+    architectureNodes: null
   });
   const [isSaving, setIsSaving] = useState(false);
 
@@ -260,6 +261,25 @@ export default function AdminProjectNew() {
             onChange={(e) => setFormData({ ...formData, description: e.target.value })}
             className="w-full rounded-lg border border-zinc-800 bg-zinc-900 px-4 py-2 text-sm text-zinc-100 focus:border-zinc-700 focus:outline-none"
           />
+        </div>
+
+        <div className="space-y-2">
+          <label className="text-sm font-medium text-zinc-200">Architecture Nodes (JSON)</label>
+          <textarea
+            rows={4}
+            value={formData.architectureNodes ? JSON.stringify(formData.architectureNodes, null, 2) : ''}
+            onChange={(e) => {
+              try {
+                const parsed = e.target.value ? JSON.parse(e.target.value) : null;
+                setFormData({ ...formData, architectureNodes: parsed });
+              } catch (err) {
+                // Ignore parse errors while typing, but ideally handle validation
+              }
+            }}
+            placeholder={'[\n  { "id": "client", "type": "frontend", "label": "React Client", "description": "UI" }\n]'}
+            className="w-full rounded-lg border border-zinc-800 bg-zinc-900 px-4 py-2 text-sm text-zinc-100 focus:border-zinc-700 focus:outline-none font-mono"
+          />
+          <p className="text-xs text-zinc-500">Optional: Raw JSON to generate the architecture diagram in the case study.</p>
         </div>
 
         <div className="flex justify-end gap-3 pt-6 border-t border-zinc-800">

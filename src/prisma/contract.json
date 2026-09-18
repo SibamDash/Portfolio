@@ -29,6 +29,13 @@
                   "kind": "scalar"
                 }
               },
+              "architectureNodes": {
+                "nullable": true,
+                "type": {
+                  "codecId": "pg/json@1",
+                  "kind": "scalar"
+                }
+              },
               "caseStudyEnabled": {
                 "nullable": false,
                 "type": {
@@ -211,6 +218,9 @@
                 "architecture": {
                   "column": "architecture"
                 },
+                "architectureNodes": {
+                  "column": "architectureNodes"
+                },
                 "caseStudyEnabled": {
                   "column": "caseStudyEnabled"
                 },
@@ -329,6 +339,11 @@
                 "architecture": {
                   "codecId": "pg/text@1",
                   "nativeType": "text",
+                  "nullable": true
+                },
+                "architectureNodes": {
+                  "codecId": "pg/json@1",
+                  "nativeType": "json",
                   "nullable": true
                 },
                 "caseStudyEnabled": {
@@ -497,7 +512,7 @@
         "kind": "postgres-schema"
       }
     },
-    "storageHash": "712f26f1bda35588abe643ed857fc4d286ca56c493ee71db101e1570ee08b294"
+    "storageHash": "82c70b9c79754a1dddb5292a572e625e1d8e51a966db36c525900dd4b98bbe17"
   },
   "execution": {
     "executionHash": "1db52226bdf6545c98de3b52bf7b1c4ea41fcbbde66213874cc43df2d63f7198",

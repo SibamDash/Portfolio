@@ -57,6 +57,7 @@ router.post('/', async (req, res) => {
       problem: data.problem || null,
       solution: data.solution || null,
       architecture: data.architecture || null,
+      architectureNodes: data.architectureNodes || null,
       engineeringDecisions: Array.isArray(data.engineeringDecisions) ? data.engineeringDecisions : [],
       challenges: Array.isArray(data.challenges) ? data.challenges : [],
       results: Array.isArray(data.results) ? data.results : [],

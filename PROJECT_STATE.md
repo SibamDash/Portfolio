@@ -2,11 +2,16 @@
 
 ## 1. Context
 - **Project**: Portfolio
-- **Phase**: Phase 12: Architecture Visualization
-- **State**: Build clean diagram visualization for project architecture.
+- **Phase**: Phase 13: Engineering Lab
+- **State**: Build dedicated route for standalone technical experiments.
 - **Repository**: `main` branch solely used
 
 ## 2. Recent Actions
+- **Phase 12 (Architecture Visualization)**: Completed
+  - Added `architectureNodes` (Json) to Prisma schema.
+  - Built custom SVG/CSS interactive `ArchitectureDiagram.tsx`.
+  - Updated Admin UI to accept JSON for architecture nodes.
+  - Rendered diagram dynamically in Case Study view.
 - **Phase 11 (Case Study System)**: Completed
   - Built `GET /api/projects` endpoints in Express.
   - Rewrote `ProjectDetail.tsx` to fetch dynamic project case studies from the backend.

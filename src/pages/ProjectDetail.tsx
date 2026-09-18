@@ -4,6 +4,7 @@ import { ExternalLink, ArrowLeft, Terminal, Layout, CheckCircle2, AlertTriangle,
 import { Badge } from '@/components/ui/badge'
 import { Button } from '@/components/ui/button'
 import { getProjectDestination } from '../lib/project-utils'
+import { ArchitectureDiagram } from '@/components/ArchitectureDiagram'
 
 const Github = ({ className, ...props }: React.SVGProps<SVGSVGElement>) => (
   <svg
@@ -138,10 +139,19 @@ export function ProjectDetail() {
                 </section>
               )}
 
-              {project.architecture && (
+              {(project.architecture || project.architectureNodes) && (
                 <section>
                   <h2 className="text-2xl font-bold mb-4">Architecture</h2>
-                  <p className="text-lg text-muted-foreground leading-relaxed mb-6 whitespace-pre-wrap">{project.architecture}</p>
+                  {project.architecture && (
+                    <p className="text-lg text-muted-foreground leading-relaxed mb-6 whitespace-pre-wrap">
+                      {project.architecture}
+                    </p>
+                  )}
+                  {project.architectureNodes && Array.isArray(project.architectureNodes) && (
+                    <div className="mt-8">
+                      <ArchitectureDiagram nodes={project.architectureNodes} />
+                    </div>
+                  )}
                 </section>
               )}
 

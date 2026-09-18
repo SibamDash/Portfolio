@@ -19,6 +19,7 @@ model Project {
   problem              String?
   solution             String?
   architecture         String?
+  architectureNodes    Json?
   engineeringDecisions String[]
   challenges           String[]
   results              String[]

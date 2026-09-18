@@ -34,7 +34,7 @@ import type {
 } from '@prisma/orm-postgres/contract/types';
 
 export type StorageHash =
-  StorageHashBase<'712f26f1bda35588abe643ed857fc4d286ca56c493ee71db101e1570ee08b294'>;
+  StorageHashBase<'82c70b9c79754a1dddb5292a572e625e1d8e51a966db36c525900dd4b98bbe17'>;
 export type ExecutionHash =
   ExecutionHashBase<'1db52226bdf6545c98de3b52bf7b1c4ea41fcbbde66213874cc43df2d63f7198'>;
 export type ProfileHash =
@@ -261,6 +261,7 @@ export type FieldOutputTypes = {
       readonly problem: CodecTypes['pg/text@1']['output'] | null;
       readonly solution: CodecTypes['pg/text@1']['output'] | null;
       readonly architecture: CodecTypes['pg/text@1']['output'] | null;
+      readonly architectureNodes: CodecTypes['pg/json@1']['output'] | null;
       readonly engineeringDecisions: ReadonlyArray<CodecTypes['pg/text@1']['output']>;
       readonly challenges: ReadonlyArray<CodecTypes['pg/text@1']['output']>;
       readonly results: ReadonlyArray<CodecTypes['pg/text@1']['output']>;
@@ -293,6 +294,7 @@ export type FieldInputTypes = {
       readonly problem: CodecTypes['pg/text@1']['input'] | null;
       readonly solution: CodecTypes['pg/text@1']['input'] | null;
       readonly architecture: CodecTypes['pg/text@1']['input'] | null;
+      readonly architectureNodes: CodecTypes['pg/json@1']['input'] | null;
       readonly engineeringDecisions: ReadonlyArray<CodecTypes['pg/text@1']['input']>;
       readonly challenges: ReadonlyArray<CodecTypes['pg/text@1']['input']>;
       readonly results: ReadonlyArray<CodecTypes['pg/text@1']['input']>;
@@ -309,6 +311,7 @@ export type StorageColumnTypes = {
     readonly project: {
       readonly apiDocumentationUrl: CodecTypes['pg/text@1']['output'] | null;
       readonly architecture: CodecTypes['pg/text@1']['output'] | null;
+      readonly architectureNodes: CodecTypes['pg/json@1']['output'] | null;
       readonly caseStudyEnabled: CodecTypes['pg/bool@1']['output'];
       readonly category: CodecTypes['pg/text@1']['output'];
       readonly challenges: ReadonlyArray<CodecTypes['pg/text@1']['output']>;
@@ -341,6 +344,7 @@ export type StorageColumnInputTypes = {
     readonly project: {
       readonly apiDocumentationUrl: CodecTypes['pg/text@1']['input'] | null;
       readonly architecture: CodecTypes['pg/text@1']['input'] | null;
+      readonly architectureNodes: CodecTypes['pg/json@1']['input'] | null;
       readonly caseStudyEnabled: CodecTypes['pg/bool@1']['input'];
       readonly category: CodecTypes['pg/text@1']['input'];
       readonly challenges: ReadonlyArray<CodecTypes['pg/text@1']['input']>;
@@ -389,6 +393,7 @@ export namespace Models {
     problem: CodecTypes['pg/text@1']['output'] | null;
     solution: CodecTypes['pg/text@1']['output'] | null;
     architecture: CodecTypes['pg/text@1']['output'] | null;
+    architectureNodes: CodecTypes['pg/json@1']['output'] | null;
     engineeringDecisions: ReadonlyArray<CodecTypes['pg/text@1']['output']>;
     challenges: ReadonlyArray<CodecTypes['pg/text@1']['output']>;
     results: ReadonlyArray<CodecTypes['pg/text@1']['output']>;
@@ -527,6 +532,11 @@ type ContractBase = Omit<
                 readonly architecture: {
                   readonly nativeType: 'text';
                   readonly codecId: 'pg/text@1';
+                  readonly nullable: true;
+                };
+                readonly architectureNodes: {
+                  readonly nativeType: 'json';
+                  readonly codecId: 'pg/json@1';
                   readonly nullable: true;
                 };
                 readonly engineeringDecisions: {
@@ -672,6 +682,10 @@ type ContractBase = Omit<
                 readonly nullable: true;
                 readonly type: { readonly kind: 'scalar'; readonly codecId: 'pg/text@1' };
               };
+              readonly architectureNodes: {
+                readonly nullable: true;
+                readonly type: { readonly kind: 'scalar'; readonly codecId: 'pg/json@1' };
+              };
               readonly engineeringDecisions: {
                 readonly nullable: false;
                 readonly type: { readonly kind: 'scalar'; readonly codecId: 'pg/text@1' };
@@ -737,6 +751,7 @@ type ContractBase = Omit<
                 readonly problem: { readonly column: 'problem' };
                 readonly solution: { readonly column: 'solution' };
                 readonly architecture: { readonly column: 'architecture' };
+                readonly architectureNodes: { readonly column: 'architectureNodes' };
                 readonly engineeringDecisions: { readonly column: 'engineeringDecisions' };
                 readonly challenges: { readonly column: 'challenges' };
                 readonly results: { readonly column: 'results' };

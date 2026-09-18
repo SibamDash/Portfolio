@@ -3,6 +3,7 @@
 All notable changes to this project will be documented in this file.
 
 ## [Unreleased]
+- Added Phase 12: Architecture Visualization (JSON-driven interactive custom CSS/SVG diagrams for case studies)
 - Added Phase 11: Case Study System (Public API, dynamic `ProjectDetail`, `Home`, and `Work` components)
 - Added Phase 10: Automatic Live/GitHub Fallback (Centralized URL validation and destination resolution)
 - Added Phase 9: Admin Project Management (GitHub metadata import, two-step project creation flow)
