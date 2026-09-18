@@ -1,6 +1,4 @@
-import { PrismaClient } from '@prisma/client'
-
-const prisma = new PrismaClient()
+import { db } from './db'
 
 async function main() {
   console.log('Seeding database with initial projects...')
@@ -17,6 +15,9 @@ async function main() {
       status: 'IN_DEVELOPMENT',
       featured: true,
       displayOrder: 1,
+      results: [],
+      challenges: [],
+      engineeringDecisions: []
     },
     {
       slug: 'multi-tenant-saas',
@@ -30,6 +31,9 @@ async function main() {
       status: 'LIVE',
       featured: true,
       displayOrder: 2,
+      results: [],
+      challenges: [],
+      engineeringDecisions: []
     },
     {
       slug: 'glausco-crm',
@@ -42,6 +46,9 @@ async function main() {
       status: 'ARCHIVED',
       featured: false,
       displayOrder: 3,
+      results: [],
+      challenges: [],
+      engineeringDecisions: []
     },
     {
       slug: 'event-notifier',
@@ -54,16 +61,15 @@ async function main() {
       status: 'LIVE',
       featured: false,
       displayOrder: 4,
+      results: [],
+      challenges: [],
+      engineeringDecisions: []
     }
   ]
 
   for (const project of projects) {
-    await prisma.project.upsert({
-      where: { slug: project.slug },
-      update: project,
-      create: project,
-    })
-    console.log(`Upserted project: ${project.name}`)
+    await db.orm.public.Project.create(project)
+    console.log(`Created project: ${project.name}`)
   }
 
   console.log('Seeding complete.')
@@ -73,7 +79,4 @@ main()
   .catch((e) => {
     console.error(e)
     process.exit(1)
-  })
-  .finally(async () => {
-    await prisma.$disconnect()
   })
