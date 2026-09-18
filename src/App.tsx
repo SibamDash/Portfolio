@@ -8,6 +8,9 @@ import { Work } from './pages/Work';
 import { ProjectDetail } from './pages/ProjectDetail';
 import AdminLogin from './pages/AdminLogin';
 import { ProtectedRoute } from './components/ProtectedRoute';
+import AdminLayout from './layouts/AdminLayout';
+import AdminProjects from './pages/AdminProjects';
+import { Navigate } from 'react-router-dom';
 
 function App() {
   return (
@@ -32,7 +35,11 @@ function App() {
 
               {/* Protected Admin Routes */}
               <Route element={<ProtectedRoute />}>
-                <Route path="/admin" element={<div>Admin Dashboard</div>} />
+                <Route element={<AdminLayout />}>
+                  <Route path="/admin" element={<Navigate to="/admin/projects" replace />} />
+                  <Route path="/admin/projects" element={<AdminProjects />} />
+                  <Route path="/admin/settings" element={<div className="p-8 text-zinc-100">Settings Coming Soon</div>} />
+                </Route>
               </Route>
             </Routes>
           </BrowserRouter>
