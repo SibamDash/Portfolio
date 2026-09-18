@@ -4,6 +4,9 @@ All notable changes to this project will be documented in this file.
 
 ## [Unreleased]
 ### Added
+- Phase 4: Project Card Experience.
+  - Built interactive ProjectCard with Framer Motion hover mechanics.
+  - Implemented automatic Live vs GitHub destination fallback.
 - Phase 3: Public Homepage implementation.
   - Added Hero section, Current Focus, Featured Work.
   - Added Engineering Lab preview, Build Log, and About preview.

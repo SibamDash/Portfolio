@@ -1,10 +1,10 @@
 # Portfolio Project Progress
 
 ## Current Phase
-Phase 4 — Project Card Experience
+Phase 5 — Project Detail / Case Studies
 
 ## Current Section
-Implement Netflix-inspired hover cards and destination logic
+Build /work/[slug] route and case study layout
 
 ## Overall Status
 IN PROGRESS
@@ -14,17 +14,15 @@ IN PROGRESS
 - Phase 1: Architecture & Foundation
 - Phase 2: Design System
 - Phase 3: Public Homepage
-  - Hero section
-  - Current focus
-  - Featured work
-  - Engineering focus (Lab)
-  - Build log and About previews
+- Phase 4: Project Card Experience
+  - Project card component
+  - Framer motion hover interactions
+  - Live vs GitHub fallback logic
 
 ## In Progress
-- Phase 4: Project Card Experience
+- Phase 5: Project Detail / Case Studies
 
 ## Pending
-- Phase 5: Project Detail / Case Studies
 - Phase 6: Database & Content Model
 
 ## Last Verified Checkpoint

@@ -1,8 +1,9 @@
 import { Link } from 'react-router-dom'
-import { Card, CardContent, CardHeader, CardTitle, CardDescription } from '@/components/ui/card'
+import { Card, CardHeader, CardTitle, CardContent, CardDescription } from '@/components/ui/card'
 import { Button } from '@/components/ui/button'
 import { Badge } from '@/components/ui/badge'
 import { ArrowRight, Terminal } from 'lucide-react'
+import { ProjectCard } from '@/components/ProjectCard'
 
 // Placeholder data based on Phase 3 spec requirements
 const FEATURED_PROJECTS = [
@@ -80,28 +81,9 @@ export function Home() {
             </Link>
           </Button>
         </div>
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 items-start">
           {FEATURED_PROJECTS.map((project) => (
-            <Link key={project.id} to={`/work/${project.slug}`} className="group block focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring rounded-xl">
-              <Card className="h-full transition-colors hover:bg-muted/50">
-                <CardHeader>
-                  <div className="flex justify-between items-start gap-4">
-                    <div>
-                      <CardDescription className="mb-2">{project.category}</CardDescription>
-                      <CardTitle className="text-xl group-hover:text-primary transition-colors">{project.name}</CardTitle>
-                    </div>
-                  </div>
-                </CardHeader>
-                <CardContent>
-                  <p className="text-muted-foreground text-sm mb-6">{project.description}</p>
-                  <div className="flex flex-wrap gap-2">
-                    {project.tags.map(tag => (
-                      <Badge key={tag} variant="secondary" className="bg-background">{tag}</Badge>
-                    ))}
-                  </div>
-                </CardContent>
-              </Card>
-            </Link>
+            <ProjectCard key={project.id} project={project as any} />
           ))}
         </div>
         <Button asChild variant="outline" className="w-full mt-6 sm:hidden">
