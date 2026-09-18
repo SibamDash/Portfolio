@@ -1,10 +1,10 @@
 # Portfolio Project Progress
 
 ## Current Phase
-Phase 7 — Admin Authentication
+Phase 8 — Admin Project Dashboard
 
 ## Current Section
-Setup secure session/JWT login for admin routes
+Build the admin dashboard for managing projects
 
 ## Overall Status
 IN PROGRESS
@@ -17,20 +17,18 @@ IN PROGRESS
 - Phase 4: Project Card Experience
 - Phase 5: Project Detail / Case Studies
 - Phase 6: Database & Content Model
-  - PostgreSQL schema using Prisma ORM (Prisma 8 Composer)
-  - Migrations pipeline
-  - Seed script for initial genuine projects
-
-## In Progress
 - Phase 7: Admin Authentication
 
-## Pending
+## In Progress
 - Phase 8: Admin Project Dashboard
+
+## Pending
+- Phase 9: Admin Project Management
 
 ## Last Verified Checkpoint
 - Date/time: 2026-09-18
-- Commit: pending Phase 1 commit
-- Branch: master
+- Commit: 9088c13
+- Branch: main
 - Tests: N/A
 - Typecheck: Pass
 - Lint: Pass

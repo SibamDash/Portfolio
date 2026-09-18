@@ -3,6 +3,7 @@
 All notable changes to this project will be documented in this file.
 
 ## [Unreleased]
+- Added Phase 7: Admin Authentication (Express backend, JWT cookies, Protected routes, AuthContext)
 ### Added
 - Phase 6: Database & Content Model.
   - Setup Prisma 8 Composer with PostgreSQL target.
