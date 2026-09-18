@@ -1,10 +1,10 @@
 # Portfolio Project Progress
 
 ## Current Phase
-Phase 11 — Case Study System
+Phase 12 — Architecture Visualization
 
 ## Current Section
-Build detailed project case studies
+Add optional architecture diagrams to case studies
 
 ## Overall Status
 IN PROGRESS
@@ -21,12 +21,13 @@ IN PROGRESS
 - Phase 8: Admin Project Dashboard
 - Phase 9: Admin Project Management
 - Phase 10: Automatic Live/GitHub Fallback
-
-## In Progress
 - Phase 11: Case Study System
 
-## Pending
+## In Progress
 - Phase 12: Architecture Visualization
+
+## Pending
+- Phase 13: Engineering Lab
 
 ## Last Verified Checkpoint
 - Date/time: 2026-09-18

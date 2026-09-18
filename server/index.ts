@@ -5,6 +5,7 @@ import 'dotenv/config';
 import authRoutes from './auth';
 import projectsRoutes from './projects';
 import githubRoutes from './github';
+import publicProjectsRoutes from './public-projects';
 
 const app = express();
 const PORT = process.env.PORT || 3000;
@@ -21,6 +22,7 @@ app.use(cookieParser());
 app.use('/api/auth', authRoutes);
 app.use('/api/admin/projects', projectsRoutes);
 app.use('/api/admin/github', githubRoutes);
+app.use('/api/projects', publicProjectsRoutes);
 
 // Health check
 app.get('/api/health', (req, res) => {

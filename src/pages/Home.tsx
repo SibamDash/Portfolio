@@ -1,147 +1,100 @@
+import { useState, useEffect } from 'react'
+import { ArrowRight, Loader2 } from 'lucide-react'
 import { Link } from 'react-router-dom'
-import { Card, CardHeader, CardTitle, CardContent, CardDescription } from '@/components/ui/card'
 import { Button } from '@/components/ui/button'
-import { Badge } from '@/components/ui/badge'
-import { ArrowRight, Terminal } from 'lucide-react'
 import { ProjectCard } from '@/components/ProjectCard'
 
-// Placeholder data based on Phase 3 spec requirements
-const FEATURED_PROJECTS = [
-  {
-    id: 1,
-    slug: 'enterprise-iam',
-    name: 'Enterprise IAM',
-    category: 'Identity · Authorization',
-    description: 'A multi-tenant identity platform handling authentication, RBAC, and secure token issuance.',
-    tags: ['Go', 'PostgreSQL', 'Redis'],
-    status: 'IN DEVELOPMENT',
-  },
-  {
-    id: 2,
-    slug: 'multi-tenant-saas',
-    name: 'Multi-Tenant SaaS',
-    category: 'Backend · API',
-    description: 'Core infrastructure for tenant isolation and billing integration.',
-    tags: ['Node.js', 'TypeScript', 'Stripe'],
-    status: 'LIVE',
-  }
-]
-
 export function Home() {
+  const [featuredProjects, setFeaturedProjects] = useState<any[]>([])
+  const [isLoading, setIsLoading] = useState(true)
+
+  useEffect(() => {
+    const fetchProjects = async () => {
+      try {
+        const res = await fetch('/api/projects')
+        if (res.ok) {
+          const data = await res.json()
+          setFeaturedProjects(data.filter((p: any) => p.featured))
+        }
+      } catch (err) {
+        console.error('Failed to fetch featured projects:', err)
+      } finally {
+        setIsLoading(false)
+      }
+    }
+    fetchProjects()
+  }, [])
+
   return (
-    <div className="flex flex-col gap-24 pb-24">
-      {/* Hero Section */}
-      <section className="container mx-auto px-4 md:px-8 pt-24 md:pt-32">
-        <div className="max-w-3xl flex flex-col gap-6 animate-in fade-in slide-in-from-bottom-4 duration-1000">
-          <Badge variant="secondary" className="w-fit">SOFTWARE ENGINEER</Badge>
-          <h1 className="text-4xl md:text-6xl font-bold tracking-tight text-foreground leading-[1.1]">
-            I build software systems that solve real problems.
-          </h1>
-          <p className="text-lg md:text-xl text-muted-foreground max-w-[600px] leading-relaxed">
-            Backend systems, SaaS platforms, identity infrastructure and full-stack products.
-          </p>
-          <div className="flex flex-wrap gap-4 mt-4">
-            <Button asChild size="lg">
-              <Link to="/work">Explore Work</Link>
-            </Button>
-            <Button asChild variant="outline" size="lg">
-              <a href="https://github.com/SibamDash" target="_blank" rel="noreferrer">GitHub</a>
-            </Button>
+    <div className="container mx-auto px-4 md:px-8 py-12 md:py-24 animate-in fade-in duration-700">
+      <section className="max-w-3xl mb-32">
+        <h1 className="text-sm font-semibold tracking-widest text-primary uppercase mb-6">
+          Software Engineer
+        </h1>
+        <h2 className="text-4xl md:text-6xl font-extrabold tracking-tight mb-8 leading-[1.1]">
+          I build software systems that solve real problems.
+        </h2>
+        <p className="text-xl md:text-2xl text-muted-foreground mb-12 leading-relaxed">
+          Backend systems, SaaS platforms, identity infrastructure and full-stack products designed for scale and clarity.
+        </p>
+        
+        <div className="flex flex-wrap items-center gap-4">
+          <Button asChild size="lg" className="rounded-full px-8">
+            <Link to="/work">Explore Work</Link>
+          </Button>
+          <Button asChild variant="outline" size="lg" className="rounded-full px-8">
+            <a href="https://github.com/SibamDash" target="_blank" rel="noreferrer">
+              GitHub Profile
+            </a>
+          </Button>
+        </div>
+      </section>
+
+      <section className="mb-32 max-w-3xl">
+        <h3 className="text-sm font-semibold tracking-widest text-muted-foreground uppercase mb-6 flex items-center gap-3">
+          Currently Building
+          <span className="relative flex h-2.5 w-2.5">
+            <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-primary opacity-75"></span>
+            <span className="relative inline-flex rounded-full h-2.5 w-2.5 bg-primary"></span>
+          </span>
+        </h3>
+        <div className="p-8 rounded-2xl bg-muted/50 border border-border group transition-colors hover:border-primary/20">
+          <h4 className="text-2xl font-bold mb-2">Enterprise IAM</h4>
+          <p className="text-muted-foreground mb-4">Identity &middot; Authorization &middot; Security</p>
+          <div className="flex items-center text-sm font-medium text-primary">
+            <span className="bg-primary/10 px-3 py-1 rounded-full">In Development</span>
           </div>
         </div>
       </section>
 
-      {/* Current Focus Section */}
-      <section className="container mx-auto px-4 md:px-8">
-        <h2 className="text-sm font-semibold tracking-widest text-muted-foreground uppercase mb-6">Currently Building</h2>
-        <Card className="max-w-2xl bg-secondary/30 border-primary/10">
-          <CardHeader>
-            <CardTitle className="text-xl">Enterprise IAM</CardTitle>
-            <CardDescription>Identity · Authorization · Security</CardDescription>
-          </CardHeader>
-          <CardContent>
-            <div className="flex items-center gap-2 text-sm font-medium text-amber-500 dark:text-amber-400">
-              <span className="relative flex h-2 w-2">
-                <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-amber-400 opacity-75"></span>
-                <span className="relative inline-flex rounded-full h-2 w-2 bg-amber-500"></span>
-              </span>
-              IN DEVELOPMENT
-            </div>
-          </CardContent>
-        </Card>
-      </section>
+      <section>
+        <div className="flex items-end justify-between mb-12">
+          <h3 className="text-3xl font-bold tracking-tight">Featured Work</h3>
+          <Link to="/work" className="hidden md:flex items-center gap-2 text-sm font-medium text-muted-foreground hover:text-foreground transition-colors group">
+            View all projects <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
+          </Link>
+        </div>
+        
+        {isLoading ? (
+          <div className="flex items-center justify-center h-64">
+            <Loader2 className="h-8 w-8 animate-spin text-muted-foreground" />
+          </div>
+        ) : (
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            {featuredProjects.map(project => (
+              <ProjectCard key={project.id || project.slug} project={project} />
+            ))}
+          </div>
+        )}
 
-      {/* Featured Work Section */}
-      <section className="container mx-auto px-4 md:px-8">
-        <div className="flex items-center justify-between mb-8">
-          <h2 className="text-2xl md:text-3xl font-bold tracking-tight">Featured Work</h2>
-          <Button asChild variant="ghost" className="hidden sm:inline-flex">
-            <Link to="/work" className="group">
-              View all <ArrowRight className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1" />
+        <div className="mt-8 text-center md:hidden">
+          <Button asChild variant="ghost" className="w-full group">
+            <Link to="/work">
+              View all projects <ArrowRight className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1" />
             </Link>
           </Button>
         </div>
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 items-start">
-          {FEATURED_PROJECTS.map((project) => (
-            <ProjectCard key={project.id} project={project as any} />
-          ))}
-        </div>
-        <Button asChild variant="outline" className="w-full mt-6 sm:hidden">
-          <Link to="/work">View all projects</Link>
-        </Button>
       </section>
-
-      {/* Engineering Focus / Lab Preview */}
-      <section className="container mx-auto px-4 md:px-8">
-        <h2 className="text-2xl md:text-3xl font-bold tracking-tight mb-8">Engineering Lab</h2>
-        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
-          {['JWT Authentication', 'Redis Caching', 'PostgreSQL Indexing'].map((topic) => (
-            <Card key={topic} className="bg-card">
-              <CardHeader className="flex flex-row items-center gap-4 py-4">
-                <div className="h-10 w-10 rounded-md bg-primary/10 flex items-center justify-center text-primary">
-                  <Terminal className="h-5 w-5" />
-                </div>
-                <CardTitle className="text-base">{topic}</CardTitle>
-              </CardHeader>
-            </Card>
-          ))}
-        </div>
-      </section>
-
-      {/* Build Log & About Preview */}
-      <section className="container mx-auto px-4 md:px-8 grid grid-cols-1 md:grid-cols-2 gap-12 md:gap-8">
-        <div>
-          <h2 className="text-2xl font-bold tracking-tight mb-6">Build Log</h2>
-          <div className="space-y-6 border-l border-border pl-6 relative">
-            <div className="relative">
-              <div className="absolute -left-[29px] top-1 h-3 w-3 rounded-full bg-primary ring-4 ring-background" />
-              <p className="text-sm font-medium text-muted-foreground mb-1">2026.09.18</p>
-              <p className="text-base font-medium">Established portfolio architecture and foundation</p>
-            </div>
-            <div className="relative">
-              <div className="absolute -left-[29px] top-1 h-3 w-3 rounded-full bg-muted ring-4 ring-background" />
-              <p className="text-sm font-medium text-muted-foreground mb-1">2026.09.11</p>
-              <p className="text-base text-muted-foreground">Added tenant-aware authorization</p>
-            </div>
-          </div>
-        </div>
-
-        <div>
-          <h2 className="text-2xl font-bold tracking-tight mb-6">About</h2>
-          <div className="space-y-4 text-muted-foreground">
-            <p>
-              I'm a software engineer specializing in backend systems, distributed architectures, and modern web applications. 
-            </p>
-            <p>
-              I focus on building reliable, scalable systems with clear technical foundations. When I'm not writing code, I'm usually exploring new infrastructure tools or optimizing database queries.
-            </p>
-            <Button asChild variant="link" className="p-0 h-auto font-medium">
-              <Link to="/about">Read more about me <ArrowRight className="ml-1 h-4 w-4" /></Link>
-            </Button>
-          </div>
-        </div>
-      </section>
-
     </div>
   )
 }

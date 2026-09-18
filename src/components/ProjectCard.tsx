@@ -1,8 +1,10 @@
 import { useState } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import { Link } from 'react-router-dom'
-import { ExternalLink, FileText, PlayCircle } from 'lucide-react'
+import { ExternalLink, FileText } from 'lucide-react'
 import { getProjectDestination } from '../lib/project-utils'
+import { Badge } from './ui/badge'
+import { Button } from './ui/button'
 
 const Github = ({ className, ...props }: React.SVGProps<SVGSVGElement>) => (
   <svg
@@ -20,31 +22,25 @@ const Github = ({ className, ...props }: React.SVGProps<SVGSVGElement>) => (
     <path d="M9 18c-4.51 2-5-2-7-2" />
   </svg>
 )
-import { Card } from '@/components/ui/card'
-import { Badge } from '@/components/ui/badge'
-import { Button } from '@/components/ui/button'
-import { cn } from '@/lib/utils'
 
-export interface ProjectData {
-  id: string | number
-  slug: string
-  name: string
-  category: string
-  shortDescription: string
-  repositoryUrl: string
-  liveUrl?: string
-  previewImageUrl?: string
-  previewVideoUrl?: string
-  technologies: string[]
-  status: string
+export type ProjectCardProps = {
+  project: {
+    id?: string;
+    slug: string;
+    name: string;
+    category: string;
+    shortDescription: string;
+    repositoryUrl?: string | null;
+    liveUrl?: string | null;
+    previewImageUrl?: string | null;
+    previewVideoUrl?: string | null;
+    logoUrl?: string | null;
+    technologies: string[];
+    caseStudyEnabled?: boolean;
+  }
 }
 
-interface ProjectCardProps {
-  project: ProjectData
-  className?: string
-}
-
-export function ProjectCard({ project, className }: ProjectCardProps) {
+export function ProjectCard({ project }: ProjectCardProps) {
   const [isHovered, setIsHovered] = useState(false)
 
   // Automatic Live/GitHub fallback destination logic
@@ -53,92 +49,137 @@ export function ProjectCard({ project, className }: ProjectCardProps) {
   const PrimaryIcon = destination?.type === 'live' ? ExternalLink : Github;
   const primaryDestination = destination?.url || '#';
 
+  const cardContent = (
+    <>
+      {/* Project Image/Video Area */}
+      <div className="relative aspect-video w-full overflow-hidden bg-muted">
+        {project.previewVideoUrl ? (
+          <video 
+            src={project.previewVideoUrl} 
+            autoPlay 
+            muted 
+            loop 
+            playsInline 
+            className="w-full h-full object-cover transition-transform duration-700 ease-out group-hover:scale-105"
+          />
+        ) : project.previewImageUrl ? (
+          <img 
+            src={project.previewImageUrl} 
+            alt={project.name} 
+            className="w-full h-full object-cover transition-transform duration-700 ease-out group-hover:scale-105"
+          />
+        ) : (
+          <div className="w-full h-full flex items-center justify-center text-muted-foreground/30 bg-primary/5 border-b border-border/50">
+            <span className="font-mono text-4xl opacity-50">{project.name.substring(0,2).toUpperCase()}</span>
+          </div>
+        )}
+        
+        {/* Hover Overlay */}
+        <div className="absolute inset-0 bg-black/60 opacity-0 group-hover:opacity-100 transition-opacity duration-300 hidden md:flex items-center justify-center p-6 text-center">
+          <p className="text-sm font-medium text-white/90 line-clamp-3">
+            {project.shortDescription}
+          </p>
+        </div>
+      </div>
+
+      {/* Project Details */}
+      <div className="p-6 flex flex-col flex-1">
+        <div className="flex items-start justify-between mb-2">
+          <div>
+            <h3 className="text-xl font-bold tracking-tight mb-1 group-hover:text-primary transition-colors">
+              {project.name}
+            </h3>
+            <p className="text-sm text-muted-foreground">
+              {project.category}
+            </p>
+          </div>
+          {project.logoUrl && (
+            <div className="w-10 h-10 rounded-full bg-muted/50 overflow-hidden flex items-center justify-center shrink-0">
+              <img src={project.logoUrl} alt="" className="w-6 h-6 object-contain" />
+            </div>
+          )}
+        </div>
+
+        <motion.div 
+          animate={{ opacity: isHovered ? 0 : 1, height: isHovered ? 0 : 'auto' }}
+          className="text-muted-foreground flex items-center justify-between mt-auto overflow-hidden"
+        >
+          <span className="text-sm truncate pr-4 mt-2">{project.shortDescription}</span>
+          <PrimaryIcon className="h-4 w-4 shrink-0 opacity-50" />
+        </motion.div>
+
+        <AnimatePresence>
+          {isHovered && (
+            <motion.div
+              initial={{ opacity: 0, height: 0 }}
+              animate={{ opacity: 1, height: 'auto' }}
+              exit={{ opacity: 0, height: 0 }}
+              transition={{ duration: 0.2 }}
+              className="flex flex-col gap-4 mt-2 overflow-hidden"
+            >
+              {/* Technologies */}
+              <div className="flex flex-wrap gap-1.5 mt-2">
+                {project.technologies.slice(0, 4).map((tech) => (
+                  <Badge key={tech} variant="secondary" className="text-[10px] uppercase font-semibold tracking-wider">
+                    {tech}
+                  </Badge>
+                ))}
+                {project.technologies.length > 4 && (
+                  <Badge variant="outline" className="text-[10px] uppercase font-semibold text-muted-foreground">
+                    +{project.technologies.length - 4} more
+                  </Badge>
+                )}
+              </div>
+
+              {/* Actions */}
+              <div className="flex items-center gap-2 pt-3 mt-auto border-t border-border/50">
+                {project.caseStudyEnabled && (
+                  <Link 
+                    to={`/work/${project.slug}`}
+                    onClick={(e) => e.stopPropagation()}
+                    className="flex-1 flex items-center justify-center gap-2 bg-secondary/80 hover:bg-secondary text-secondary-foreground text-xs font-medium py-2 px-3 rounded-md transition-colors"
+                  >
+                    <FileText className="h-3.5 w-3.5" />
+                    Case Study
+                  </Link>
+                )}
+                <Button asChild size="sm" variant={project.caseStudyEnabled ? 'outline' : 'default'} className="flex-1 gap-2">
+                  <a href={primaryDestination} target="_blank" rel="noreferrer" onClick={(e) => e.stopPropagation()}>
+                    <PrimaryIcon className="h-3.5 w-3.5" />
+                    {primaryActionText}
+                  </a>
+                </Button>
+              </div>
+            </motion.div>
+          )}
+        </AnimatePresence>
+      </div>
+    </>
+  );
+
+  const wrapperProps = project.caseStudyEnabled 
+    ? { to: `/work/${project.slug}` }
+    : { href: primaryDestination, target: "_blank", rel: "noreferrer" };
+
   return (
     <motion.div
-      className={cn("relative group w-full outline-none", className)}
-      onHoverStart={() => setIsHovered(true)}
-      onHoverEnd={() => setIsHovered(false)}
-      onClick={() => setIsHovered(!isHovered)}
-      layout
-      transition={{ duration: 0.3, ease: 'easeInOut' }}
+      initial={{ opacity: 0, y: 20 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true, margin: "-100px" }}
+      transition={{ duration: 0.5, ease: "easeOut" }}
+      onMouseEnter={() => setIsHovered(true)}
+      onMouseLeave={() => setIsHovered(false)}
+      className="group relative flex flex-col rounded-2xl border bg-card text-card-foreground shadow-sm overflow-hidden transition-all duration-300 hover:shadow-xl hover:border-primary/20 h-[380px]"
     >
-      <Card className="h-full overflow-hidden border-border bg-card transition-colors hover:border-primary/50 cursor-pointer">
-        <motion.div layout="position" className="p-6 flex flex-col h-full z-10 relative bg-card">
-          <div className="flex items-start justify-between mb-2">
-            <span className="text-sm font-medium text-muted-foreground uppercase tracking-wider">{project.category}</span>
-          </div>
-          <h3 className="text-2xl font-bold tracking-tight mb-2">{project.name}</h3>
-          
-          {/* Base state visibility */}
-          <motion.div 
-            initial={false}
-            animate={{ opacity: isHovered ? 0 : 1, height: isHovered ? 0 : 'auto' }}
-            className="text-muted-foreground flex items-center justify-between mt-auto"
-          >
-             <span className="text-sm truncate pr-4">{project.shortDescription}</span>
-             <PlayCircle className="h-5 w-5 opacity-50 shrink-0" />
-          </motion.div>
-
-          {/* Hover state content */}
-          <AnimatePresence>
-            {isHovered && (
-              <motion.div
-                initial={{ opacity: 0, height: 0 }}
-                animate={{ opacity: 1, height: 'auto' }}
-                exit={{ opacity: 0, height: 0 }}
-                transition={{ duration: 0.3, ease: 'easeInOut' }}
-                className="flex flex-col gap-4 mt-4 overflow-hidden"
-              >
-                {/* Media Preview */}
-                {(project.previewImageUrl || project.previewVideoUrl) ? (
-                  <div className="aspect-video w-full rounded-md overflow-hidden bg-muted relative">
-                    {project.previewVideoUrl ? (
-                      <video src={project.previewVideoUrl} autoPlay muted loop playsInline className="object-cover w-full h-full" />
-                    ) : (
-                      <img src={project.previewImageUrl} alt={project.name} className="object-cover w-full h-full" />
-                    )}
-                  </div>
-                ) : (
-                  <div className="aspect-video w-full rounded-md bg-primary/5 flex items-center justify-center text-muted-foreground border border-dashed">
-                    <span className="text-sm">No preview available</span>
-                  </div>
-                )}
-
-                <p className="text-sm text-foreground">{project.shortDescription}</p>
-
-                <div className="flex flex-wrap gap-2">
-                  {project.technologies.map(tech => (
-                    <Badge key={tech} variant="secondary" className="text-xs">{tech}</Badge>
-                  ))}
-                </div>
-
-                <div className="flex flex-wrap items-center gap-3 mt-2 pt-4 border-t border-border">
-                  <Button asChild size="sm" className="gap-2">
-                    <a href={primaryDestination} target="_blank" rel="noreferrer" onClick={(e) => e.stopPropagation()}>
-                      <PrimaryIcon className="h-4 w-4" />
-                      {primaryActionText}
-                    </a>
-                  </Button>
-                  <Button asChild size="sm" variant="outline" className="gap-2">
-                    <Link to={`/work/${project.slug}`} onClick={(e) => e.stopPropagation()}>
-                      <FileText className="h-4 w-4" />
-                      Case Study
-                    </Link>
-                  </Button>
-                  {project.liveUrl && (
-                    <Button asChild size="sm" variant="ghost" className="gap-2 px-2 ml-auto">
-                      <a href={project.repositoryUrl} target="_blank" rel="noreferrer" onClick={(e) => e.stopPropagation()} title="Source Code">
-                        <Github className="h-4 w-4" />
-                        <span className="sr-only">GitHub</span>
-                      </a>
-                    </Button>
-                  )}
-                </div>
-              </motion.div>
-            )}
-          </AnimatePresence>
-        </motion.div>
-      </Card>
+      {project.caseStudyEnabled ? (
+        <Link {...wrapperProps as any} className="block w-full h-full flex flex-col">
+          {cardContent}
+        </Link>
+      ) : (
+        <a {...wrapperProps as any} className="block w-full h-full flex flex-col">
+          {cardContent}
+        </a>
+      )}
     </motion.div>
   )
 }

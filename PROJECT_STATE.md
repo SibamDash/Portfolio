@@ -2,11 +2,16 @@
 
 ## 1. Context
 - **Project**: Portfolio
-- **Phase**: Phase 11: Case Study System
-- **State**: Build case study detail views with extended schema fields
+- **Phase**: Phase 12: Architecture Visualization
+- **State**: Build clean diagram visualization for project architecture.
 - **Repository**: `main` branch solely used
 
 ## 2. Recent Actions
+- **Phase 11 (Case Study System)**: Completed
+  - Built `GET /api/projects` endpoints in Express.
+  - Rewrote `ProjectDetail.tsx` to fetch dynamic project case studies from the backend.
+  - Adapted `Home.tsx` and `Work.tsx` to dynamically fetch projects.
+  - Conditionally rendered deep-dive content based on `caseStudyEnabled`.
 - **Phase 10 (Automatic Live/GitHub Fallback)**: Completed
   - Extracted URL validation and fallback logic into `getProjectDestination`.
   - Applied centralized fallback logic to `ProjectCard` and `ProjectDetail`.
