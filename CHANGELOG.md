@@ -4,6 +4,9 @@ All notable changes to this project will be documented in this file.
 
 ## [Unreleased]
 ### Added
+- Phase 5: Project Detail / Case Studies.
+  - Implemented `/work` route for listing projects.
+  - Implemented `/work/[slug]` route with detailed case study layout.
 - Phase 4: Project Card Experience.
   - Built interactive ProjectCard with Framer Motion hover mechanics.
   - Implemented automatic Live vs GitHub destination fallback.

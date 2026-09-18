@@ -1,10 +1,10 @@
 # Project State
 
 ## Current Phase
-Phase 5 — Project Detail / Case Studies
+Phase 6 — Database & Content Model
 
 ## Active Task
-Implement /work/[slug] page for case studies
+Set up PostgreSQL database connection and schema
 
 ## Completed Tasks
 - Phase 0: Repository Audit
@@ -12,9 +12,10 @@ Implement /work/[slug] page for case studies
 - Phase 2: Design System
 - Phase 3: Public Homepage
 - Phase 4: Project Card Experience
+- Phase 5: Project Detail / Case Studies
 
 ## Known Issues
 - None
 
 ## Next Task
-- Build project detail layout with Overview, Architecture, etc.
+- Setup server/backend entry for DB ORM/driver

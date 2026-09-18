@@ -1,10 +1,10 @@
 # Portfolio Project Progress
 
 ## Current Phase
-Phase 5 — Project Detail / Case Studies
+Phase 6 — Database & Content Model
 
 ## Current Section
-Build /work/[slug] route and case study layout
+Create PostgreSQL schema and database connection setup
 
 ## Overall Status
 IN PROGRESS
@@ -15,15 +15,17 @@ IN PROGRESS
 - Phase 2: Design System
 - Phase 3: Public Homepage
 - Phase 4: Project Card Experience
-  - Project card component
-  - Framer motion hover interactions
-  - Live vs GitHub fallback logic
+- Phase 5: Project Detail / Case Studies
+  - Work list page
+  - Project detail case study layout
+  - Architecture and overview sections
 
 ## In Progress
-- Phase 5: Project Detail / Case Studies
+- Phase 6: Database & Content Model
 
 ## Pending
-- Phase 6: Database & Content Model
+- Phase 7: Admin Authentication
+- Phase 8: Admin Project Dashboard
 
 ## Last Verified Checkpoint
 - Date/time: 2026-09-18
