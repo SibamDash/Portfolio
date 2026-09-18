@@ -3,6 +3,7 @@
 All notable changes to this project will be documented in this file.
 
 ## [Unreleased]
+- Added Phase 8: Admin Project Dashboard (Projects list API, Admin Layout, Dashboard Data Table)
 - Added Phase 7: Admin Authentication (Express backend, JWT cookies, Protected routes, AuthContext)
 ### Added
 - Phase 6: Database & Content Model.

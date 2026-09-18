@@ -1,10 +1,10 @@
 # Portfolio Project Progress
 
 ## Current Phase
-Phase 8 — Admin Project Dashboard
+Phase 9 — Admin Project Management
 
 ## Current Section
-Build the admin dashboard for managing projects
+Add project flow and GitHub import system
 
 ## Overall Status
 IN PROGRESS
@@ -18,12 +18,13 @@ IN PROGRESS
 - Phase 5: Project Detail / Case Studies
 - Phase 6: Database & Content Model
 - Phase 7: Admin Authentication
-
-## In Progress
 - Phase 8: Admin Project Dashboard
 
-## Pending
+## In Progress
 - Phase 9: Admin Project Management
+
+## Pending
+- Phase 10: Automatic Live/GitHub Fallback
 
 ## Last Verified Checkpoint
 - Date/time: 2026-09-18

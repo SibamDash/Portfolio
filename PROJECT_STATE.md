@@ -2,11 +2,15 @@
 
 ## 1. Context
 - **Project**: Portfolio
-- **Phase**: Phase 8: Admin Project Dashboard
-- **State**: Build the admin dashboard for managing projects
+- **Phase**: Phase 9: Admin Project Management
+- **State**: Build project creation flow and GitHub import integration
 - **Repository**: `main` branch solely used
 
 ## 2. Recent Actions
+- **Phase 8 (Admin Dashboard)**: Completed
+  - Created Express API endpoint for listing projects
+  - Built `AdminLayout` with sidebar navigation
+  - Built `AdminProjects` UI showing projects table and empty states
 - **Phase 7 (Admin Authentication)**: Completed
   - Added Express backend server for API routes
   - Implemented JWT cookie-based authentication
@@ -26,4 +30,4 @@
 - Database migrations require a valid `DATABASE_URL` in `.env` to execute against a live PostgreSQL instance.
 
 ## Next Task
-- Implement project CRUD operations and dashboard views
+- Implement project creation form and GitHub data import.
