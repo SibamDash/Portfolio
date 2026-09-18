@@ -1,10 +1,10 @@
 # Portfolio Project Progress
 
 ## Current Phase
-Phase 14 — Dark/Light Mode System
+Phase 15 — Markdown Blog System (Optional/Future)
 
 ## Current Section
-Implement global theme switching across the portfolio
+Build a static or dynamic markdown blog system for technical writing
 
 ## Overall Status
 IN PROGRESS
@@ -24,12 +24,13 @@ IN PROGRESS
 - Phase 11: Case Study System
 - Phase 12: Architecture Visualization
 - Phase 13: Engineering Lab
-
-## In Progress
 - Phase 14: Dark/Light Mode System
 
-## Pending
+## In Progress
 - Phase 15: Markdown Blog System (Optional/Future)
+
+## Pending
+- None (Final Phase)
 
 ## Last Verified Checkpoint
 - Date/time: 2026-09-18

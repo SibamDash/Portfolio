@@ -3,6 +3,7 @@
 All notable changes to this project will be documented in this file.
 
 ## [Unreleased]
+- Added Phase 14: Dark/Light Mode System (Global ThemeToggle component, Next-themes provider wrapper, premium off-white CSS variables)
 - Added Phase 13: Engineering Lab (Dedicated `/lab` route and interactive Canvas Particle System experiment)
 - Added Phase 12: Architecture Visualization (JSON-driven interactive custom CSS/SVG diagrams for case studies)
 - Added Phase 11: Case Study System (Public API, dynamic `ProjectDetail`, `Home`, and `Work` components)

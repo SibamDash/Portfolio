@@ -2,11 +2,16 @@
 
 ## 1. Context
 - **Project**: Portfolio
-- **Phase**: Phase 14: Dark/Light Mode System
-- **State**: Build global theme toggle and refine light mode aesthetics.
+- **Phase**: Phase 15: Markdown Blog System (Optional/Future)
+- **State**: Implement an optional Markdown Blog System.
 - **Repository**: `main` branch solely used
 
 ## 2. Recent Actions
+- **Phase 14 (Dark/Light Mode System)**: Completed
+  - Added `ThemeToggle.tsx` component with `lucide-react` Sun/Moon icons.
+  - Wrapped `App` in `ThemeProvider` in `main.tsx`.
+  - Updated `index.css` light mode background to a premium off-white (`hsl(0, 0%, 99%)`) and cleaned up legacy manual variables.
+  - Added `ThemeToggle` to global `Navbar` navigation inside `RootLayout.tsx`.
 - **Phase 13 (Engineering Lab)**: Completed
   - Added `/lab` route in `App.tsx` and navigation menu.
   - Built `Lab.tsx` grid layout.
