@@ -3,6 +3,7 @@
 All notable changes to this project will be documented in this file.
 
 ## [Unreleased]
+- Added Phase 15: Markdown Blog System (Database-backed writing platform with react-markdown and Tailwind typography)
 - Added Phase 14: Dark/Light Mode System (Global ThemeToggle component, Next-themes provider wrapper, premium off-white CSS variables)
 - Added Phase 13: Engineering Lab (Dedicated `/lab` route and interactive Canvas Particle System experiment)
 - Added Phase 12: Architecture Visualization (JSON-driven interactive custom CSS/SVG diagrams for case studies)

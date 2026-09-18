@@ -6,6 +6,7 @@ import authRoutes from './auth';
 import projectsRoutes from './projects';
 import githubRoutes from './github';
 import publicProjectsRoutes from './public-projects';
+import { adminPostsRouter, publicPostsRouter } from './posts';
 
 const app = express();
 const PORT = process.env.PORT || 3000;
@@ -21,8 +22,10 @@ app.use(cookieParser());
 // Mount routes
 app.use('/api/auth', authRoutes);
 app.use('/api/admin/projects', projectsRoutes);
+app.use('/api/admin/posts', adminPostsRouter);
 app.use('/api/admin/github', githubRoutes);
 app.use('/api/projects', publicProjectsRoutes);
+app.use('/api/posts', publicPostsRouter);
 
 // Health check
 app.get('/api/health', (req, res) => {

@@ -30,3 +30,15 @@ model Project {
   createdAt            TimestamptzString @default(now())
   updatedAt            temporal.updatedAtString()
 }
+
+model Post {
+  id          String   @id @default(uuid())
+  slug        String   @unique
+  title       String
+  excerpt     String?
+  content     String
+  published   Boolean  @default(false)
+  publishedAt TimestamptzString?
+  createdAt   TimestamptzString @default(now())
+  updatedAt   temporal.updatedAtString()
+}

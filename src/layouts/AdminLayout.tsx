@@ -1,13 +1,15 @@
 import { Outlet, Link, useLocation } from 'react-router-dom';
 import { useAuth } from '../contexts/AuthContext';
-import { LayoutDashboard, LogOut, Settings } from 'lucide-react';
+import { LayoutDashboard, LogOut, Settings, FolderKanban, FileText } from 'lucide-react';
 
 export default function AdminLayout() {
   const { logout } = useAuth();
   const location = useLocation();
 
   const navItems = [
-    { name: 'Projects', path: '/admin/projects', icon: LayoutDashboard },
+    { name: 'Dashboard', path: '/admin', icon: LayoutDashboard },
+    { name: 'Projects', path: '/admin/projects', icon: FolderKanban },
+    { name: 'Writing', path: '/admin/posts', icon: FileText },
     { name: 'Settings', path: '/admin/settings', icon: Settings },
   ];
 

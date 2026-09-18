@@ -2,11 +2,16 @@
 
 ## 1. Context
 - **Project**: Portfolio
-- **Phase**: Phase 15: Markdown Blog System (Optional/Future)
-- **State**: Implement an optional Markdown Blog System.
+- **Phase**: All Phases Completed
+- **State**: Final Project Delivery.
 - **Repository**: `main` branch solely used
 
 ## 2. Recent Actions
+- **Phase 15 (Markdown Blog System)**: Completed
+  - Added Prisma model `Post` and emitted new contract.
+  - Built Express routes for Admin CRUD and public API fetches (`/api/admin/posts`, `/api/posts`).
+  - Created `AdminPosts` list and `AdminPostNew` creation UI.
+  - Built public `Blog.tsx` and `BlogPost.tsx` utilizing `react-markdown` and `@tailwindcss/typography`.
 - **Phase 14 (Dark/Light Mode System)**: Completed
   - Added `ThemeToggle.tsx` component with `lucide-react` Sun/Moon icons.
   - Wrapped `App` in `ThemeProvider` in `main.tsx`.

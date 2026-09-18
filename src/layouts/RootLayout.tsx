@@ -13,6 +13,7 @@ export function RootLayout() {
             <nav className="flex items-center gap-6 text-sm font-medium">
               <Link to="/work" className="transition-colors hover:text-foreground/80">Work</Link>
               <Link to="/lab" className="transition-colors hover:text-foreground/80">Lab</Link>
+              <Link to="/writing" className="transition-colors hover:text-foreground/80">Writing</Link>
               <Link to="/about" className="transition-colors hover:text-foreground/80">About</Link>
               <Link to="/resume" className="transition-colors hover:text-foreground/80">Resume</Link>
             </nav>
