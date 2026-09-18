@@ -1,10 +1,10 @@
 # Project State
 
 ## Current Phase
-Phase 6 — Database & Content Model
+Phase 7 — Admin Authentication
 
 ## Active Task
-Set up PostgreSQL database connection and schema
+Secure /admin routes with authentication mechanism
 
 ## Completed Tasks
 - Phase 0: Repository Audit
@@ -13,9 +13,10 @@ Set up PostgreSQL database connection and schema
 - Phase 3: Public Homepage
 - Phase 4: Project Card Experience
 - Phase 5: Project Detail / Case Studies
+- Phase 6: Database & Content Model
 
 ## Known Issues
-- None
+- Database migrations require a valid `DATABASE_URL` in `.env` to execute against a live PostgreSQL instance.
 
 ## Next Task
-- Setup server/backend entry for DB ORM/driver
+- Implement JWT/session-based admin login page and middleware

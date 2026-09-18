@@ -1,0 +1,100 @@
+[
+  {
+    "id": "schema.public",
+    "label": "Create schema \"public\"",
+    "operationClass": "additive",
+    "target": {
+      "id": "postgres"
+    },
+    "precheck": [],
+    "execute": [
+      {
+        "description": "Create schema \"public\"",
+        "sql": "CREATE SCHEMA IF NOT EXISTS \"public\"",
+        "params": []
+      }
+    ],
+    "postcheck": []
+  },
+  {
+    "id": "table.project",
+    "label": "Create table \"project\"",
+    "summary": "Creates table \"project\"",
+    "operationClass": "additive",
+    "target": {
+      "id": "postgres",
+      "details": {
+        "schema": "public",
+        "objectType": "table",
+        "name": "project"
+      }
+    },
+    "precheck": [
+      {
+        "description": "ensure table \"project\" does not exist",
+        "sql": "SELECT (to_regclass($1)) IS NULL AS \"result\"",
+        "params": [
+          "\"public\".\"project\""
+        ]
+      }
+    ],
+    "execute": [
+      {
+        "description": "create table \"project\"",
+        "sql": "CREATE TABLE \"public\".\"project\" (\n  \"apiDocumentationUrl\" text,\n  \"architecture\" text,\n  \"caseStudyEnabled\" bool DEFAULT false NOT NULL,\n  \"category\" text NOT NULL,\n  \"challenges\" text[] NOT NULL,\n  \"createdAt\" timestamptz DEFAULT (now()) NOT NULL,\n  \"description\" text NOT NULL,\n  \"displayOrder\" int4 DEFAULT 0 NOT NULL,\n  \"engineeringDecisions\" text[] NOT NULL,\n  \"featured\" bool DEFAULT false NOT NULL,\n  \"githubMetadata\" json,\n  \"id\" text NOT NULL,\n  \"liveUrl\" text,\n  \"logoUrl\" text,\n  \"name\" text NOT NULL,\n  \"previewImageUrl\" text,\n  \"previewVideoUrl\" text,\n  \"problem\" text,\n  \"repositoryUrl\" text NOT NULL,\n  \"results\" text[] NOT NULL,\n  \"shortDescription\" text NOT NULL,\n  \"slug\" text NOT NULL,\n  \"solution\" text,\n  \"status\" text DEFAULT 'IN_DEVELOPMENT' NOT NULL,\n  \"technologies\" text[] NOT NULL,\n  \"updatedAt\" timestamptz NOT NULL,\n  PRIMARY KEY (\"id\"),\n  CONSTRAINT \"project_challenges_elem_not_null_8c29d25c\" CHECK (array_position(\"challenges\", NULL) IS NULL),\n  CONSTRAINT \"project_engineeringDecisions_elem_not_null_e709f9d6\" CHECK (array_position(\"engineeringDecisions\", NULL) IS NULL),\n  CONSTRAINT \"project_results_elem_not_null_ff91de2d\" CHECK (array_position(\"results\", NULL) IS NULL),\n  CONSTRAINT \"project_technologies_elem_not_null_89b37e18\" CHECK (array_position(\"technologies\", NULL) IS NULL)\n)",
+        "params": []
+      }
+    ],
+    "postcheck": [
+      {
+        "description": "verify table \"project\" exists",
+        "sql": "SELECT (to_regclass($1)) IS NOT NULL AS \"result\"",
+        "params": [
+          "\"public\".\"project\""
+        ]
+      }
+    ]
+  },
+  {
+    "id": "unique.project.project_slug_key",
+    "label": "Add unique constraint on \"project\" (slug)",
+    "operationClass": "additive",
+    "target": {
+      "id": "postgres",
+      "details": {
+        "schema": "public",
+        "objectType": "unique",
+        "name": "project_slug_key",
+        "table": "project"
+      }
+    },
+    "precheck": [
+      {
+        "description": "ensure constraint \"project_slug_key\" does not exist",
+        "sql": "SELECT NOT EXISTS (SELECT 1 AS \"one\" FROM \"pg_constraint\" AS \"c\" INNER JOIN \"pg_namespace\" AS \"n\" ON \"n\".\"oid\" = \"c\".\"connamespace\" WHERE (\"c\".\"conname\" = $1 AND \"n\".\"nspname\" = $2 AND \"c\".\"conrelid\" = to_regclass($3))) AS \"result\"",
+        "params": [
+          "project_slug_key",
+          "public",
+          "\"public\".\"project\""
+        ]
+      }
+    ],
+    "execute": [
+      {
+        "description": "add unique constraint \"project_slug_key\"",
+        "sql": "ALTER TABLE \"public\".\"project\" ADD CONSTRAINT \"project_slug_key\" UNIQUE (\"slug\")"
+      }
+    ],
+    "postcheck": [
+      {
+        "description": "verify constraint \"project_slug_key\" exists",
+        "sql": "SELECT EXISTS (SELECT 1 AS \"one\" FROM \"pg_constraint\" AS \"c\" INNER JOIN \"pg_namespace\" AS \"n\" ON \"n\".\"oid\" = \"c\".\"connamespace\" WHERE (\"c\".\"conname\" = $1 AND \"n\".\"nspname\" = $2 AND \"c\".\"conrelid\" = to_regclass($3))) AS \"result\"",
+        "params": [
+          "project_slug_key",
+          "public",
+          "\"public\".\"project\""
+        ]
+      }
+    ]
+  }
+]

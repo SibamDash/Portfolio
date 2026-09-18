@@ -1,10 +1,10 @@
 # Portfolio Project Progress
 
 ## Current Phase
-Phase 6 — Database & Content Model
+Phase 7 — Admin Authentication
 
 ## Current Section
-Create PostgreSQL schema and database connection setup
+Setup secure session/JWT login for admin routes
 
 ## Overall Status
 IN PROGRESS
@@ -16,15 +16,15 @@ IN PROGRESS
 - Phase 3: Public Homepage
 - Phase 4: Project Card Experience
 - Phase 5: Project Detail / Case Studies
-  - Work list page
-  - Project detail case study layout
-  - Architecture and overview sections
+- Phase 6: Database & Content Model
+  - PostgreSQL schema using Prisma ORM (Prisma 8 Composer)
+  - Migrations pipeline
+  - Seed script for initial genuine projects
 
 ## In Progress
-- Phase 6: Database & Content Model
+- Phase 7: Admin Authentication
 
 ## Pending
-- Phase 7: Admin Authentication
 - Phase 8: Admin Project Dashboard
 
 ## Last Verified Checkpoint

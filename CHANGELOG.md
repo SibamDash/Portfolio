@@ -4,6 +4,10 @@ All notable changes to this project will be documented in this file.
 
 ## [Unreleased]
 ### Added
+- Phase 6: Database & Content Model.
+  - Setup Prisma 8 Composer with PostgreSQL target.
+  - Defined `Project` schema for portfolio projects (categories, featured flags, timestamps, arrays).
+  - Configured initial database migrations and `seed.ts` data.
 - Phase 5: Project Detail / Case Studies.
   - Implemented `/work` route for listing projects.
   - Implemented `/work/[slug]` route with detailed case study layout.
