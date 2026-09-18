@@ -1,10 +1,10 @@
 # Portfolio Project Progress
 
 ## Current Phase
-Phase 13 — Engineering Lab
+Phase 14 — Dark/Light Mode System
 
 ## Current Section
-Create a dedicated space for standalone technical experiments
+Implement global theme switching across the portfolio
 
 ## Overall Status
 IN PROGRESS
@@ -23,12 +23,13 @@ IN PROGRESS
 - Phase 10: Automatic Live/GitHub Fallback
 - Phase 11: Case Study System
 - Phase 12: Architecture Visualization
-
-## In Progress
 - Phase 13: Engineering Lab
 
-## Pending
+## In Progress
 - Phase 14: Dark/Light Mode System
+
+## Pending
+- Phase 15: Markdown Blog System (Optional/Future)
 
 ## Last Verified Checkpoint
 - Date/time: 2026-09-18

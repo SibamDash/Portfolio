@@ -14,7 +14,7 @@ export function RootLayout() {
             <Link to="/" className="flex items-center space-x-2">
               <span className="inline-block font-bold">SIBAM DASH</span>
             </Link>
-            <nav className="hidden md:flex gap-6 text-sm font-medium">
+            <nav className="flex items-center gap-6 text-sm font-medium">
               <Link to="/work" className="transition-colors hover:text-foreground/80">Work</Link>
               <Link to="/lab" className="transition-colors hover:text-foreground/80">Lab</Link>
               <Link to="/about" className="transition-colors hover:text-foreground/80">About</Link>

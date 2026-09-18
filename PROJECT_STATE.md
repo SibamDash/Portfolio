@@ -2,11 +2,15 @@
 
 ## 1. Context
 - **Project**: Portfolio
-- **Phase**: Phase 13: Engineering Lab
-- **State**: Build dedicated route for standalone technical experiments.
+- **Phase**: Phase 14: Dark/Light Mode System
+- **State**: Build global theme toggle and refine light mode aesthetics.
 - **Repository**: `main` branch solely used
 
 ## 2. Recent Actions
+- **Phase 13 (Engineering Lab)**: Completed
+  - Added `/lab` route in `App.tsx` and navigation menu.
+  - Built `Lab.tsx` grid layout.
+  - Implemented an interactive HTML5 Canvas `ParticleSystem` experiment using vanilla JS + Canvas API integrated in a React component.
 - **Phase 12 (Architecture Visualization)**: Completed
   - Added `architectureNodes` (Json) to Prisma schema.
   - Built custom SVG/CSS interactive `ArchitectureDiagram.tsx`.
