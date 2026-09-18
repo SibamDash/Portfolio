@@ -1,17 +1,17 @@
 # Project State
 
 ## Current Phase
-Phase 0 — Repository Audit
+Phase 2 — Design System
 
 ## Active Task
-Initialize state files
+Build UI primitives and base styles
 
 ## Completed Tasks
-- Inspect repository
-- Read implementation.md
+- Phase 0: Repository Audit
+- Phase 1: Architecture & Foundation (React, Vite, TS, Tailwind CSS)
 
 ## Known Issues
 - None
 
 ## Next Task
-- Phase 1: Architecture & Foundation (Frontend setup)
+- Build design system components (buttons, links, cards, navigation, etc)

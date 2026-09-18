@@ -7,9 +7,24 @@
 
 ---
 
+This project has one and only one intended GitHub remote repository:
+
+**https://github.com/SibamDash/Portfolio.git**
+
+Antigravity MUST use this repository for all Portfolio code.
+
+## Repository identity
+
+Expected remote:
+
+```text
+origin → https://github.com/SibamDash/Portfolio.git
+```
+
 # 0. NON-NEGOTIABLE RULES
 
 These rules apply to the entire project.
+
 
 ## 0.1 Product rules
 
