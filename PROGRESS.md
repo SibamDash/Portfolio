@@ -1,10 +1,10 @@
 # Portfolio Project Progress
 
 ## Current Phase
-Phase 2 — Design System
+Phase 3 — Public Homepage
 
 ## Current Section
-Build design system primitives (typography, spacing, buttons, cards)
+Build Hero, Current Focus, and Featured Work
 
 ## Overall Status
 IN PROGRESS
@@ -12,18 +12,17 @@ IN PROGRESS
 ## Completed
 - Phase 0: Repository Audit
 - Phase 1: Architecture & Foundation
-  - React/Vite/TypeScript setup
-  - Tailwind CSS v4 setup
-  - Error boundaries
-  - Environment variable conventions
-  - Route structure
+- Phase 2: Design System
+  - Typography and layout structure
+  - Core UI primitives (Button, Card, Badge, Dialog, Skeleton, EmptyState)
+  - ThemeProvider (light/dark mode)
 
 ## In Progress
-- Phase 2: Design System (primitives, dark/light mode)
+- Phase 3: Public Homepage
 
 ## Pending
-- Phase 3: Public Homepage
 - Phase 4: Project Card Experience
+- Phase 5: Project Detail / Case Studies
 
 ## Last Verified Checkpoint
 - Date/time: 2026-09-18

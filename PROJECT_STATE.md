@@ -1,17 +1,18 @@
 # Project State
 
 ## Current Phase
-Phase 2 — Design System
+Phase 3 — Public Homepage
 
 ## Active Task
-Build UI primitives and base styles
+Build Homepage sections (Hero, Featured Work)
 
 ## Completed Tasks
 - Phase 0: Repository Audit
-- Phase 1: Architecture & Foundation (React, Vite, TS, Tailwind CSS)
+- Phase 1: Architecture & Foundation
+- Phase 2: Design System (UI primitives, dark mode)
 
 ## Known Issues
 - None
 
 ## Next Task
-- Build design system components (buttons, links, cards, navigation, etc)
+- Assemble the homepage with placeholder featured projects
