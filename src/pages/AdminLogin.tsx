@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { useNavigate, useLocation } from 'react-router-dom';
 import { useAuth } from '../contexts/AuthContext';
 import { Button } from '../components/ui/button';
@@ -9,9 +9,15 @@ export default function AdminLogin() {
   const [isLoading, setIsLoading] = useState(false);
   const navigate = useNavigate();
   const location = useLocation();
-  const { checkAuth } = useAuth();
+  const { checkAuth, isAuthenticated } = useAuth();
 
   const from = location.state?.from?.pathname || '/admin';
+  
+  useEffect(() => {
+    if (isAuthenticated) {
+      navigate(from, { replace: true });
+    }
+  }, [isAuthenticated, navigate, from]);
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -35,7 +41,7 @@ export default function AdminLogin() {
       }
 
       await checkAuth();
-      navigate(from, { replace: true });
+      // Navigation is now handled by the useEffect above
     } catch (err: any) {
       setError(err.message);
     } finally {
