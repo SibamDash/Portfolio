@@ -4,6 +4,9 @@ All notable changes to this project will be documented in this file.
 
 ## [Unreleased]
 ### Added
+- Phase 3: Public Homepage implementation.
+  - Added Hero section, Current Focus, Featured Work.
+  - Added Engineering Lab preview, Build Log, and About preview.
 - Phase 2: Design System setup.
   - Implemented core UI primitives: Button, Card, Badge, Dialog, Skeleton, EmptyState.
   - Built ThemeProvider for seamless light/dark mode toggling.

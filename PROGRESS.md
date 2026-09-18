@@ -1,10 +1,10 @@
 # Portfolio Project Progress
 
 ## Current Phase
-Phase 3 — Public Homepage
+Phase 4 — Project Card Experience
 
 ## Current Section
-Build Hero, Current Focus, and Featured Work
+Implement Netflix-inspired hover cards and destination logic
 
 ## Overall Status
 IN PROGRESS
@@ -13,16 +13,19 @@ IN PROGRESS
 - Phase 0: Repository Audit
 - Phase 1: Architecture & Foundation
 - Phase 2: Design System
-  - Typography and layout structure
-  - Core UI primitives (Button, Card, Badge, Dialog, Skeleton, EmptyState)
-  - ThemeProvider (light/dark mode)
+- Phase 3: Public Homepage
+  - Hero section
+  - Current focus
+  - Featured work
+  - Engineering focus (Lab)
+  - Build log and About previews
 
 ## In Progress
-- Phase 3: Public Homepage
+- Phase 4: Project Card Experience
 
 ## Pending
-- Phase 4: Project Card Experience
 - Phase 5: Project Detail / Case Studies
+- Phase 6: Database & Content Model
 
 ## Last Verified Checkpoint
 - Date/time: 2026-09-18
