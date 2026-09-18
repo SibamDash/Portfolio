@@ -3,6 +3,7 @@
 All notable changes to this project will be documented in this file.
 
 ## [Unreleased]
+- Added Phase 10: Automatic Live/GitHub Fallback (Centralized URL validation and destination resolution)
 - Added Phase 9: Admin Project Management (GitHub metadata import, two-step project creation flow)
 - Added Phase 8: Admin Project Dashboard (Projects list API, Admin Layout, Dashboard Data Table)
 - Added Phase 7: Admin Authentication (Express backend, JWT cookies, Protected routes, AuthContext)

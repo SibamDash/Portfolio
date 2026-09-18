@@ -2,6 +2,7 @@ import { useState } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import { Link } from 'react-router-dom'
 import { ExternalLink, FileText, PlayCircle } from 'lucide-react'
+import { getProjectDestination } from '../lib/project-utils'
 
 const Github = ({ className, ...props }: React.SVGProps<SVGSVGElement>) => (
   <svg
@@ -47,9 +48,10 @@ export function ProjectCard({ project, className }: ProjectCardProps) {
   const [isHovered, setIsHovered] = useState(false)
 
   // Automatic Live/GitHub fallback destination logic
-  const primaryDestination = project.liveUrl ? project.liveUrl : project.repositoryUrl
-  const primaryActionText = project.liveUrl ? 'Live Project' : 'GitHub Repo'
-  const PrimaryIcon = project.liveUrl ? ExternalLink : Github
+  const destination = getProjectDestination({ liveUrl: project.liveUrl, repositoryUrl: project.repositoryUrl });
+  const primaryActionText = destination?.label || 'View Project';
+  const PrimaryIcon = destination?.type === 'live' ? ExternalLink : Github;
+  const primaryDestination = destination?.url || '#';
 
   return (
     <motion.div

@@ -2,11 +2,15 @@
 
 ## 1. Context
 - **Project**: Portfolio
-- **Phase**: Phase 10: Automatic Live/GitHub Fallback
-- **State**: Centralize click behavior logic across the portfolio cards.
+- **Phase**: Phase 11: Case Study System
+- **State**: Build case study detail views with extended schema fields
 - **Repository**: `main` branch solely used
 
 ## 2. Recent Actions
+- **Phase 10 (Automatic Live/GitHub Fallback)**: Completed
+  - Extracted URL validation and fallback logic into `getProjectDestination`.
+  - Applied centralized fallback logic to `ProjectCard` and `ProjectDetail`.
+  - Added URL validation to `POST /api/admin/projects`.
 - **Phase 9 (Admin Project Management)**: Completed
   - Created GitHub API integration router (`server/github.ts`)
   - Added project creation POST API

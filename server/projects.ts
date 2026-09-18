@@ -20,6 +20,24 @@ router.post('/', async (req, res) => {
   try {
     const data = req.body;
     
+    // Validation function
+    const isValidHttpUrl = (str: string) => {
+      try {
+        const url = new URL(str);
+        return url.protocol === 'http:' || url.protocol === 'https:';
+      } catch {
+        return false;
+      }
+    };
+
+    if (!data.repositoryUrl || !isValidHttpUrl(data.repositoryUrl)) {
+      return res.status(400).json({ error: 'Valid repository URL is required' });
+    }
+
+    if (data.liveUrl && !isValidHttpUrl(data.liveUrl)) {
+      return res.status(400).json({ error: 'Live URL must be a valid HTTP/HTTPS URL' });
+    }
+
     // Convert arrays if needed, default to empty arrays for nested lists
     const newProject = await db.orm.public.Project.create({
       slug: data.slug,

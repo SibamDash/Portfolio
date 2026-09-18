@@ -1,5 +1,7 @@
 import { useParams, Link } from 'react-router-dom'
 import { ExternalLink, ArrowLeft, Terminal, Layout, CheckCircle2, AlertTriangle } from 'lucide-react'
+import { Badge } from '@/components/ui/badge'
+import { getProjectDestination } from '../lib/project-utils'
 
 const Github = ({ className, ...props }: React.SVGProps<SVGSVGElement>) => (
   <svg
@@ -17,7 +19,6 @@ const Github = ({ className, ...props }: React.SVGProps<SVGSVGElement>) => (
     <path d="M9 18c-4.51 2-5-2-7-2" />
   </svg>
 )
-import { Badge } from '@/components/ui/badge'
 import { Button } from '@/components/ui/button'
 
 export function ProjectDetail() {
@@ -52,7 +53,8 @@ export function ProjectDetail() {
     ]
   }
 
-  const primaryDestination = project.liveUrl ? project.liveUrl : project.repositoryUrl
+  const destination = getProjectDestination({ liveUrl: project.liveUrl, repositoryUrl: project.repositoryUrl });
+  const primaryDestination = destination?.url || '#';
 
   return (
     <div className="container mx-auto px-4 md:px-8 py-12 md:py-16 pb-24 animate-in fade-in duration-700">

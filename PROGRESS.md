@@ -1,10 +1,10 @@
 # Portfolio Project Progress
 
 ## Current Phase
-Phase 10 — Automatic Live/GitHub Fallback
+Phase 11 — Case Study System
 
 ## Current Section
-Centralize click behavior and destination validation
+Build detailed project case studies
 
 ## Overall Status
 IN PROGRESS
@@ -20,12 +20,13 @@ IN PROGRESS
 - Phase 7: Admin Authentication
 - Phase 8: Admin Project Dashboard
 - Phase 9: Admin Project Management
-
-## In Progress
 - Phase 10: Automatic Live/GitHub Fallback
 
-## Pending
+## In Progress
 - Phase 11: Case Study System
+
+## Pending
+- Phase 12: Architecture Visualization
 
 ## Last Verified Checkpoint
 - Date/time: 2026-09-18
