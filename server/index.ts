@@ -7,6 +7,7 @@ import projectsRoutes from './projects';
 import githubRoutes from './github';
 import publicProjectsRoutes from './public-projects';
 import { adminPostsRouter, publicPostsRouter } from './posts';
+import { db } from '../src/prisma/db';
 
 const app = express();
 const PORT = process.env.PORT || 3000;
@@ -31,6 +32,13 @@ app.use('/api/posts', publicPostsRouter);
 app.get('/api/health', (req, res) => {
   res.json({ status: 'ok' });
 });
+
+try {
+  await db.connect();
+  console.log("Connected to the database");
+} catch (e) {
+  console.error("Failed to connect to the database:", e);
+}
 
 app.listen(PORT, () => {
   console.log(`Backend server running on port ${PORT}`);

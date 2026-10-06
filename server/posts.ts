@@ -10,11 +10,9 @@ export const publicPostsRouter = Router();
 // Get all published posts
 publicPostsRouter.get('/', async (req, res) => {
   try {
-    const posts = await db.orm.public.Post.findMany({
-      where: {
-        published: { equals: true }
-      }
-    });
+    const posts = await db.orm.public.Post.where({
+      published: { equals: true }
+    }).all();
     // Sort by createdAt descending (or publishedAt if available)
     const sorted = [...posts].sort((a, b) => new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime());
     res.json(sorted);
@@ -28,12 +26,10 @@ publicPostsRouter.get('/', async (req, res) => {
 publicPostsRouter.get('/:slug', async (req, res) => {
   try {
     const { slug } = req.params;
-    const posts = await db.orm.public.Post.findMany({
-      where: {
-        slug: { equals: slug },
-        published: { equals: true }
-      }
-    });
+    const posts = await db.orm.public.Post.where({
+      slug: { equals: slug },
+      published: { equals: true }
+    }).all();
 
     if (!posts || posts.length === 0) {
       return res.status(404).json({ error: 'Post not found' });
@@ -52,7 +48,7 @@ adminPostsRouter.use(requireAuth);
 // Get all posts (including drafts)
 adminPostsRouter.get('/', async (req, res) => {
   try {
-    const posts = await db.orm.public.Post.findMany({});
+    const posts = await db.orm.public.Post.all();
     const sorted = [...posts].sort((a, b) => new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime());
     res.json(sorted);
   } catch (err) {
